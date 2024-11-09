@@ -6,5 +6,11 @@
   "packageManager": "pnpm@8.6.7",
   "version": "1.0.0",
   "scripts": {},
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4"
+  }
 }
