@@ -21,6 +21,15 @@ importers:
         specifier: ^2.1.4
         version: 2.1.4(@types/node@22.9.0)
 
+  packages/backend:
+    dependencies:
+      '@hono/node-server':
+        specifier: ^1.13.5
+        version: 1.13.5(hono@4.6.9)
+      hono:
+        specifier: ^4.6.9
+        version: 4.6.9
+
 packages:
 
   /@esbuild/aix-ppc64@0.21.5:
@@ -446,6 +455,15 @@ packages:
     dev: true
     optional: true
 
+  /@hono/node-server@1.13.5(hono@4.6.9):
+    resolution: {integrity: sha512-lSo+CFlLqAFB4fX7ePqI9nauEn64wOfJHAfc9duYFTvAG3o416pC0nTGeNjuLHchLedH+XyWda5v79CVx1PIjg==}
+    engines: {node: '>=18.14.1'}
+    peerDependencies:
+      hono: ^4
+    dependencies:
+      hono: 4.6.9
+    dev: false
+
   /@jridgewell/sourcemap-codec@1.5.0:
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
     dev: true
@@ -795,6 +813,11 @@ packages:
     dependencies:
       resolve-pkg-maps: 1.0.0
     dev: true
+
+  /hono@4.6.9:
+    resolution: {integrity: sha512-p/pN5yZLuZaHzyAOT2nw2/Ud6HhJHYmDNGH6Ck1OWBhPMVeM1r74jbCRwNi0gyFRjjbsGgoHbOyj7mT1PDNbTw==}
+    engines: {node: '>=16.9.0'}
+    dev: false
 
   /loupe@3.1.2:
     resolution: {integrity: sha512-23I4pFZHmAemUnz8WZXbYRSKYj801VDaNv9ETuMh7IrMc7VuVVSo+Z9iLE3ni30+U48iDWfi30d3twAXBYmnCg==}

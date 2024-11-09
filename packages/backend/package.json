@@ -2,7 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:http": "tsx watch src/userInterface/http/index.ts"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@hono/node-server": "^1.13.5",
+    "hono": "^4.6.9"
+  }
 }
