@@ -56,4 +56,8 @@ describe("newHomyo", () => {
     // Assert
     expect(act).toThrowError();
   });
+
+  // it("should occur type error if value is not branded", () => {
+  //   const v: Homyo = { id: 1, name: "a" };
+  // });
 });
