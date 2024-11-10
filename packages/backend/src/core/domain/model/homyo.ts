@@ -10,7 +10,11 @@ export const homyoSchema = z
 export type Homyo = z.infer<typeof homyoSchema>;
 
 const newHomyo = ({ id, name }: { id: number; name: string }): Homyo => {
-  return homyoSchema.parse({ id, name });
+  const parsed = homyoSchema.safeParse({ id, name });
+  if (!parsed.success) {
+    throw parsed.error;
+  }
+  return parsed.data;
 };
 
 export const Homyo = {
