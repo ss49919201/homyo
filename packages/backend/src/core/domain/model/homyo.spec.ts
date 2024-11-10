@@ -1,13 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { newHomyo } from "./homyo";
+import { Homyo } from "./homyo";
 
-describe("newHomyo", () => {
+describe("Homyo.new", () => {
   it("should create a new homyo", () => {
     // Arrange
     const props = { id: 1, name: "homyo" };
 
     // Act
-    const homyo = newHomyo(props);
+    const homyo = Homyo.new(props);
 
     // Assert
     expect(homyo).toEqual(props);
@@ -18,7 +18,7 @@ describe("newHomyo", () => {
     const props = { id: 0, name: "homyo" };
 
     // Act
-    const act = () => newHomyo(props);
+    const act = () => Homyo.new(props);
 
     // Assert
     expect(act).toThrowError();
@@ -29,7 +29,7 @@ describe("newHomyo", () => {
     const props = { id: 1.1, name: "homyo" };
 
     // Act
-    const act = () => newHomyo(props);
+    const act = () => Homyo.new(props);
 
     // Assert
     expect(act).toThrowError();
@@ -40,7 +40,7 @@ describe("newHomyo", () => {
     const props = { id: 1, name: "" };
 
     // Act
-    const act = () => newHomyo(props);
+    const act = () => Homyo.new(props);
 
     // Assert
     expect(act).toThrowError();
@@ -51,7 +51,7 @@ describe("newHomyo", () => {
     const props = { id: 1, name: "a".repeat(256) };
 
     // Act
-    const act = () => newHomyo(props);
+    const act = () => Homyo.new(props);
 
     // Assert
     expect(act).toThrowError();
