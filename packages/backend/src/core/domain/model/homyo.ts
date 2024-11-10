@@ -9,10 +9,36 @@ export const homyoSchema = z
 
 export type Homyo = z.infer<typeof homyoSchema>;
 
-const newHomyo = ({ id, name }: { id: number; name: string }): Homyo => {
-  const parsed = homyoSchema.safeParse({ id, name });
+export class InvalidHomyoIdError extends Error {
+  constructor() {
+    super("Invalid homyo id");
+  }
+}
+
+export class InvalidHomyoNameError extends Error {
+  constructor() {
+    super("Invalid homyo name");
+  }
+}
+
+const zodIssuePathErrorConstructor = {
+  id: () => new InvalidHomyoIdError(),
+  name: () => new InvalidHomyoNameError(),
+};
+
+const newHomyo = (props: { id: number; name: string }): Homyo => {
+  const parsed = homyoSchema.safeParse(props);
   if (!parsed.success) {
-    throw parsed.error;
+    Object.entries(zodIssuePathErrorConstructor).forEach(([path, newError]) => {
+      if (
+        parsed.error.issues.some((issue) =>
+          issue.path.some((issuePath) => issuePath === path)
+        )
+      ) {
+        throw newError();
+      }
+    });
+    throw new Error("Invalid homyo props");
   }
   return parsed.data;
 };
