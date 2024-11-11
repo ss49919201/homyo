@@ -21,15 +21,17 @@ export class InvalidHomyoNameError extends Error {
   }
 }
 
-const zodIssuePathErrorConstructor = {
+export type HomyoModelError = InvalidHomyoIdError | InvalidHomyoNameError;
+
+const propToErrConstructorMap: Record<keyof Homyo, () => HomyoModelError> = {
   id: () => new InvalidHomyoIdError(),
   name: () => new InvalidHomyoNameError(),
-};
+} as const;
 
 const newHomyo = (props: { id: number; name: string }): Homyo => {
   const parsed = homyoSchema.safeParse(props);
   if (!parsed.success) {
-    Object.entries(zodIssuePathErrorConstructor).forEach(([path, newError]) => {
+    Object.entries(propToErrConstructorMap).forEach(([path, newError]) => {
       if (
         parsed.error.issues.some((issue) =>
           issue.path.some((issuePath) => issuePath === path)
