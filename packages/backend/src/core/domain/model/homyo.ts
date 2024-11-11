@@ -10,13 +10,17 @@ const homyoSchema = z
 
 export type Homyo = z.infer<typeof homyoSchema>;
 
+export type HomyoErrorType = "InvalidHomyoIdError" | "InvalidHomyoNameError";
+
 export class InvalidHomyoIdError extends Error {
+  type: HomyoErrorType = "InvalidHomyoIdError";
   constructor() {
     super("Invalid homyo id");
   }
 }
 
 export class InvalidHomyoNameError extends Error {
+  type: HomyoErrorType = "InvalidHomyoNameError";
   constructor() {
     super("Invalid homyo name");
   }
