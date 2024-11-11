@@ -1,8 +1,9 @@
 import z from "zod";
+import { ModelId } from "./id";
 
-export const homyoSchema = z
+const homyoSchema = z
   .object({
-    id: z.number().positive().int().min(1).brand("HomyoId"),
+    id: z.custom<ModelId>().brand("HomyoId"),
     name: z.string().min(1).max(255).brand("HomyoName"),
   })
   .readonly();
@@ -28,7 +29,7 @@ const propToErrConstructorMap: Record<keyof Homyo, () => HomyoModelError> = {
   name: () => new InvalidHomyoNameError(),
 } as const;
 
-const newHomyo = (props: { id: number; name: string }): Homyo => {
+const newHomyo = (props: { id: ModelId; name: string }): Homyo => {
   const parsed = homyoSchema.safeParse(props);
   if (!parsed.success) {
     Object.entries(propToErrConstructorMap).forEach(([path, newError]) => {
