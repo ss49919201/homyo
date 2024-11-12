@@ -19,3 +19,21 @@ describe("Homyo.new", () => {
     expect(homyo).toEqual(props);
   });
 });
+
+describe("validateHomyoLength", () => {
+  it("should return null if the name is 2 characters length", () => {
+    // Act
+    const result = Homyo.validateHomyoLength("光明");
+
+    // Assert
+    expect(result).toBeNull();
+  });
+
+  it("should return an error if the name is not 2 characters length", () => {
+    // Act
+    const result = Homyo.validateHomyoLength("");
+
+    // Assert
+    expect(result).toBeInstanceOf(Error);
+  });
+});
