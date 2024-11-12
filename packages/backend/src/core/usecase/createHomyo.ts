@@ -2,6 +2,7 @@ import { z } from "zod";
 import { Homyo } from "../domain/model/homyo";
 import { newModelId } from "../domain/model/id";
 import { HomyoRepository } from "../domain/repository/homyo";
+import { InvalidParameterError } from "./error";
 
 const createHomyoPropsSchema = z
   .object({
@@ -13,6 +14,13 @@ type CreateHomyoProps = z.infer<typeof createHomyoPropsSchema>;
 
 export const newCreateHomyoUsecase = (saveHomyo: HomyoRepository["save"]) => {
   exec: async (props: CreateHomyoProps): Promise<void> => {
+    {
+      const err = Homyo.validateHomyoLength(props.name);
+      if (err) {
+        throw new InvalidParameterError(err.message);
+      }
+    }
+
     const homyo = Homyo.new({
       id: newModelId(),
       name: props.name,
