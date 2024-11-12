@@ -17,3 +17,10 @@ const newHomyo = (props: { id: ModelId; name: string }): Homyo => {
 export const Homyo = {
   new: newHomyo,
 };
+
+export const validateHomyoLength = (name: string): Error | null => {
+  if (name.length !== 2) {
+    return new Error("Homyo name must be 2 characters length");
+  }
+  return null;
+};
