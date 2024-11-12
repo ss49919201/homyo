@@ -20,10 +20,10 @@ describe("Homyo.new", () => {
   });
 });
 
-describe("validateHomyoLength", () => {
+describe("validateNameLength", () => {
   it("should return null if the name is 2 characters length", () => {
     // Act
-    const result = Homyo.validateHomyoLength("光明");
+    const result = Homyo.validateNameLength("光明");
 
     // Assert
     expect(result).toBeNull();
@@ -31,7 +31,7 @@ describe("validateHomyoLength", () => {
 
   it("should return an error if the name is not 2 characters length", () => {
     // Act
-    const result = Homyo.validateHomyoLength("");
+    const result = Homyo.validateNameLength("");
 
     // Assert
     expect(result).toBeInstanceOf(Error);

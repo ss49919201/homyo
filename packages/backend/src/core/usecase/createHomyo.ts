@@ -15,7 +15,7 @@ type CreateHomyoProps = z.infer<typeof createHomyoPropsSchema>;
 export const newCreateHomyoUsecase = (saveHomyo: HomyoRepository["save"]) => {
   exec: async (props: CreateHomyoProps): Promise<void> => {
     {
-      const err = Homyo.validateHomyoLength(props.name);
+      const err = Homyo.validateNameLength(props.name);
       if (err) {
         throw new InvalidParameterError(err.message);
       }
