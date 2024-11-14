@@ -3,3 +3,9 @@ export class InvalidParameterError extends Error {
     super("Invalid parameter: " + message);
   }
 }
+
+export class NotFoundError extends Error {
+  constructor(message: string) {
+    super("Not found: " + message);
+  }
+}
