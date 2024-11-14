@@ -12,7 +12,7 @@ const createHomyoPropsSchema = z
 
 type CreateHomyoProps = z.infer<typeof createHomyoPropsSchema>;
 
-export const newCreateHomyoUsecase = (saveHomyo: HomyoRepository["save"]) => {
+export const newCreateHomyoUsecase = (saveHomyo: HomyoRepository["save"]) => ({
   exec: async (props: CreateHomyoProps): Promise<void> => {
     {
       const err = Homyo.validateNameLength(props.name);
@@ -32,5 +32,5 @@ export const newCreateHomyoUsecase = (saveHomyo: HomyoRepository["save"]) => {
           (err instanceof Error ? err.message : JSON.stringify(err))
       );
     });
-  };
-};
+  },
+});
