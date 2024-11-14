@@ -21,7 +21,12 @@ const validateNameLength = (name: string): Error | null => {
   return null;
 };
 
+const modelIdToHomoyId = (id: ModelId): Homyo["id"] => {
+  return id as Homyo["id"];
+};
+
 export const Homyo = {
   new: newHomyo,
   validateNameLength,
+  modelIdToHomoyId,
 };
