@@ -15,37 +15,44 @@ app.get("/health", (c) => {
   return c.text("ok");
 });
 
-app.post(
-  "/homyos",
-  zValidator("json", z.object({ name: z.string() })),
-  async (c) => {
-    const { name } = c.req.valid("json");
-    await newCreateHomyoUsecase(newHomyoRepository().save).exec({ name });
-    return c.json({ message: "created" }, 201);
-  }
-);
+// /homyos
+{
+  const homyo = new Hono().basePath("/homyos");
 
-app.get(
-  "/homyos/:id",
-  zValidator("param", z.object({ id: z.string() })),
-  async (c) => {
-    const { id } = c.req.valid("param");
-    try {
-      const homyo = await newGetHomyoUsecase(
-        newHomyoRepository().loadById
-      ).exec({
-        id,
-      });
-      return c.json(homyo);
-    } catch (e: unknown) {
-      // FIXME: middleware ...
-      if (e instanceof NotFoundError) {
-        return c.json({ message: e.message }, 404);
-      }
-      throw e;
+  homyo.post(
+    "/",
+    zValidator("json", z.object({ name: z.string() })),
+    async (c) => {
+      const { name } = c.req.valid("json");
+      await newCreateHomyoUsecase(newHomyoRepository().save).exec({ name });
+      return c.json({ message: "created" }, 201);
     }
-  }
-);
+  );
+
+  homyo.get(
+    "/:id",
+    zValidator("param", z.object({ id: z.string() })),
+    async (c) => {
+      const { id } = c.req.valid("param");
+      try {
+        const homyo = await newGetHomyoUsecase(
+          newHomyoRepository().loadById
+        ).exec({
+          id,
+        });
+        return c.json(homyo);
+      } catch (e: unknown) {
+        // FIXME: middleware ...
+        if (e instanceof NotFoundError) {
+          return c.json({ message: e.message }, 404);
+        }
+        throw e;
+      }
+    }
+  );
+
+  app.route("/", homyo);
+}
 
 console.log(`Server is running on port ${PORT}`);
 serve({
