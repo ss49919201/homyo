@@ -29,7 +29,7 @@ importers:
     dependencies:
       '@hono/node-server':
         specifier: ^1.13.5
-        version: 1.13.5(hono@4.6.9)
+        version: 1.13.7(hono@4.6.9)
       '@hono/zod-validator':
         specifier: ^0.4.1
         version: 0.4.1(hono@4.6.9)(zod@3.23.8)
@@ -321,8 +321,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@hono/node-server@1.13.5':
-    resolution: {integrity: sha512-lSo+CFlLqAFB4fX7ePqI9nauEn64wOfJHAfc9duYFTvAG3o416pC0nTGeNjuLHchLedH+XyWda5v79CVx1PIjg==}
+  '@hono/node-server@1.13.7':
+    resolution: {integrity: sha512-kTfUMsoloVKtRA2fLiGSd9qBddmru9KadNyhJCwgKBxTiNkaAJEwkVN9KV/rS4HtmmNRtUh6P+YpmjRMl0d9vQ==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: ^4
@@ -811,7 +811,7 @@ snapshots:
   '@esbuild/win32-x64@0.23.1':
     optional: true
 
-  '@hono/node-server@1.13.5(hono@4.6.9)':
+  '@hono/node-server@1.13.7(hono@4.6.9)':
     dependencies:
       hono: 4.6.9
 
@@ -889,11 +889,12 @@ snapshots:
       chai: 5.1.2
       tinyrainbow: 1.2.0
 
-  '@vitest/mocker@2.1.4(vite@5.4.10)':
+  '@vitest/mocker@2.1.4(vite@5.4.10(@types/node@22.9.0))':
     dependencies:
       '@vitest/spy': 2.1.4
       estree-walker: 3.0.3
       magic-string: 0.30.12
+    optionalDependencies:
       vite: 5.4.10(@types/node@22.9.0)
 
   '@vitest/pretty-format@2.1.4':
@@ -1105,18 +1106,17 @@ snapshots:
 
   vite@5.4.10(@types/node@22.9.0):
     dependencies:
-      '@types/node': 22.9.0
       esbuild: 0.21.5
       postcss: 8.4.47
       rollup: 4.24.4
     optionalDependencies:
+      '@types/node': 22.9.0
       fsevents: 2.3.3
 
   vitest@2.1.4(@types/node@22.9.0):
     dependencies:
-      '@types/node': 22.9.0
       '@vitest/expect': 2.1.4
-      '@vitest/mocker': 2.1.4(vite@5.4.10)
+      '@vitest/mocker': 2.1.4(vite@5.4.10(@types/node@22.9.0))
       '@vitest/pretty-format': 2.1.4
       '@vitest/runner': 2.1.4
       '@vitest/snapshot': 2.1.4
@@ -1135,6 +1135,8 @@ snapshots:
       vite: 5.4.10(@types/node@22.9.0)
       vite-node: 2.1.4(@types/node@22.9.0)
       why-is-node-running: 2.3.0
+    optionalDependencies:
+      '@types/node': 22.9.0
     transitivePeerDependencies:
       - less
       - lightningcss
