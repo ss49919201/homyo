@@ -1,0 +1,14 @@
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = ""
+}
+
+model Homyo {
+    id   String @unique
+    name String
+}
