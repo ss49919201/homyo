@@ -11,4 +11,6 @@ datasource db {
 model Homyo {
     id   String @unique
     name String
+
+    @@map("homyos")
 }

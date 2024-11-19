@@ -3,7 +3,7 @@ import { PrismaD1 } from "@prisma/adapter-d1";
 import { PrismaClient } from "@prisma/client";
 import { Homyo } from "../../core/domain/model/homyo";
 
-const saveMany = async (prisma: PrismaClient) => {
+const saveMany = (prisma: PrismaClient) => {
   return async (homyos: Homyo[]): Promise<void> => {
     await prisma.homyo.createMany({
       data: homyos.map((homyo) => ({
@@ -14,9 +14,10 @@ const saveMany = async (prisma: PrismaClient) => {
   };
 };
 
-export const newHomyoRepository = (d1Database: D1Database) => {
+export const newHomyoDao = (d1Database: D1Database) => {
   const prisma = new PrismaClient({
     adapter: new PrismaD1(d1Database),
+    log: ["query"],
   });
   return {
     saveMany: saveMany(prisma),
