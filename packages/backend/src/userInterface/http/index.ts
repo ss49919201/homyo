@@ -15,7 +15,7 @@ app.get("/health", (c) => {
   return c.text("ok");
 });
 
-// /homyos
+// routing for `/homyos`
 {
   const homyo = new Hono().basePath("/homyos");
 
