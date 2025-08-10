@@ -34,8 +34,8 @@ importers:
         specifier: ^1.13.5
         version: 1.13.5(hono@4.9.0)
       '@hono/zod-validator':
-        specifier: ^0.4.1
-        version: 0.4.3(hono@4.9.0)(zod@3.24.2)
+        specifier: ^0.7.0
+        version: 0.7.2(hono@4.9.0)(zod@3.24.2)
       '@prisma/adapter-d1':
         specifier: ^6.0.0
         version: 6.13.0
@@ -539,11 +539,11 @@ packages:
     peerDependencies:
       hono: ^4
 
-  '@hono/zod-validator@0.4.3':
-    resolution: {integrity: sha512-xIgMYXDyJ4Hj6ekm9T9Y27s080Nl9NXHcJkOvkXPhubOLj8hZkOL8pDnnXfvCf5xEE8Q4oMFenQUZZREUY2gqQ==}
+  '@hono/zod-validator@0.7.2':
+    resolution: {integrity: sha512-ub5eL/NeZ4eLZawu78JpW/J+dugDAYhwqUIdp9KYScI6PZECij4Hx4UsrthlEUutqDDhPwRI0MscUfNkvn/mqQ==}
     peerDependencies:
       hono: '>=3.9.0'
-      zod: ^3.19.1
+      zod: ^3.25.0 || ^4.0.0
 
   '@jridgewell/resolve-uri@3.1.2':
     resolution: {integrity: sha512-bRISgCIjP20/tbWSPWMEi54QVPRZExkuD9lJL+UIxUKtwVJA8wW1Trb1jMs1RFXo1CBTNZ/5hpC9QvmKWdopKw==}
@@ -1397,7 +1397,7 @@ snapshots:
     dependencies:
       hono: 4.9.0
 
-  '@hono/zod-validator@0.4.3(hono@4.9.0)(zod@3.24.2)':
+  '@hono/zod-validator@0.7.2(hono@4.9.0)(zod@3.24.2)':
     dependencies:
       hono: 4.9.0
       zod: 3.24.2
