@@ -12,6 +12,6 @@
     "@prisma/adapter-d1": "^6.0.0",
     "@prisma/client": "^6.0.0",
     "hono": "^4.6.9",
-    "wrangler": "^3.87.0"
+    "wrangler": "^4.0.0"
   }
 }
